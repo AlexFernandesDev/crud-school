@@ -157,6 +157,7 @@
     "string-width": "^4.2.3",
     "strip-ansi": "^6.0.1",
     "supports-preserve-symlinks-flag": "^1.0.0",
+    "swagger-ui-express": "^5.0.0",
     "tar": "^6.2.0",
     "tarn": "^3.0.2",
     "tildify": "^2.0.0",
@@ -179,6 +180,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.8.10",
+    "@types/swagger-ui-express": "^4.1.5",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
   },
