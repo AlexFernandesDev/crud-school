@@ -17,6 +17,13 @@ Após rodar o projeto, acesse o link: http://localhost:3003/api-docs
     - [ ]  edit student
     - [ ]  delete post
 
+## Link do deploy para testar no Postman ou Insonia
+https://crud-students-h6er.onrender.com
+GET: https://crud-students-h6er.onrender.com/students
+POST: https://crud-students-h6er.onrender.com/students
+PUT: https://crud-students-h6er.onrender.com/students/:id
+DELET: https://crud-students-h6er.onrender.com/students/:id
+
 ## Como rodar este projeto?
 ```bash
 # Clone este repositório
