@@ -28,6 +28,8 @@ Após rodar o projeto, acesse o link: http://localhost:3003/api-docs
 # Clone este repositório
 $ git clone linkrepo
 
+# Crie na raiz o projeto o arquivo .env para utilizar as variaveis
+
 # Acesse a pasta do projeto no seu terminal
 cd crud-school
 
