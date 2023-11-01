@@ -1,0 +1,188 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API consulta alunos",
+    "description": "Esta API tem como função consulta e manipulação de dados de alunos de uma escola",
+    "termsOfService": "http://localhost:3000/terms",
+    "contact": {
+      "email": "alex.fern.dev@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/students": {
+      "get": {
+        "summary": "Obter lista de alunos",
+        "description": "Essa rota retorna a lista de alunos da escola ou um aluno específico buscado pelo name",
+        "tags": ["Students"],
+        "parameters": [
+            {
+              "name": "q",
+              "in": "query",
+              "description": "Nome do aluno para busca (opcional)",
+              "schema": {
+                "type": "string"
+              }
+            }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de alunos obtida com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado"
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastro de alunos da escola",
+        "description": "Essa rota será responsável por cadastrar um novo aluno na escola",
+        "tags": ["Students"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              },
+              "examples": {
+                "student": {
+                  "value": {
+                    "id": 1,
+                    "name": "Maria",
+                    "age": 21,
+                    "semester1": 9,
+                    "semester2": 9.5,
+                    "professor": "Prof. Santos",
+                    "room_number": 102
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Erro no cadastro do aluno"
+          },
+          "201": {
+            "description": "Student cadastrado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/students/{id}": {
+      "put": {
+        "summary": "Editar aluno",
+        "description": "Essa rota permite a edição de um aluno pelo ID",
+        "tags": ["Students"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do aluno a ser editado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Aluno editado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição de edição"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar aluno",
+        "description": "Essa rota permite a exclusão de um aluno pelo ID",
+        "tags": ["Students"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do aluno a ser deletado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Aluno deletado com sucesso"
+          },
+          "400": {
+            "description": "Erro na requisição de exclusão"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Student": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number"
+          },
+          "semester1": {
+            "type": "number"
+          },
+          "semester2": {
+            "type": "number"
+          },
+          "professor": {
+            "type": "string"
+          },
+          "room_number": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
